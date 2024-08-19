@@ -1,14 +1,15 @@
 package com.twopiradrian.notesapp.data.repository
 
 import com.twopiradrian.notesapp.data.datasource.room.note.NoteRoomService
-import com.twopiradrian.notesapp.domain.datasource.NoteDatasource
 import com.twopiradrian.notesapp.domain.entity.NoteEntity
 import com.twopiradrian.notesapp.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 class NoteRepository : NoteRepository {
 
-    private val roomService: NoteDatasource = NoteRoomService()
+    @Inject
+    lateinit var roomService: NoteRoomService
 
     override fun getAll(): Flow<List<NoteEntity>> {
         return roomService.getAll()
