@@ -6,7 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.twopiradrian.notesapp.ui.app.ContentType
 import com.twopiradrian.notesapp.ui.app.NavigationType
-import com.twopiradrian.notesapp.ui.screens.home.HomeScreen
+import com.twopiradrian.notesapp.ui.screen.home.HomeScreen
 
 @Composable
 fun AppNavigation (
