@@ -1,7 +1,12 @@
 package com.twopiradrian.notesapp
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.twopiradrian.notesapp.data.datasource.room.note.config.NoteDatabase
 
-@HiltAndroidApp
-class NotesApp : Application()
+class NotesApp : Application() {
+
+    val noteDatabase: NoteDatabase by lazy {
+        NoteDatabase.getDatabase(this)
+    }
+
+}

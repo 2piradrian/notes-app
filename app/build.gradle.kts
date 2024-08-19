@@ -50,7 +50,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.google.hilt)
     implementation(libs.androidx.room)
     implementation(libs.compose.material3.window.size)
     implementation(libs.androidx.navigation.compose)
