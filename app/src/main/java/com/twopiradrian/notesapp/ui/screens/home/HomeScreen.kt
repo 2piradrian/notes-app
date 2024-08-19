@@ -1,5 +1,6 @@
 package com.twopiradrian.notesapp.ui.screens.home
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.twopiradrian.notesapp.ui.app.ContentType
@@ -11,5 +12,5 @@ fun HomeScreen(
     navigationType: NavigationType,
     contentType: ContentType
 ) {
-
+    Text(text = "Home Screen")
 }

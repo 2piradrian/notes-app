@@ -50,6 +50,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.compiler)
+    implementation(libs.androidx.room)
     implementation(libs.compose.material3.window.size)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.ktx)
