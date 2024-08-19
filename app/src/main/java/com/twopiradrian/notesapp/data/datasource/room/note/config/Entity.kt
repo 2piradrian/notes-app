@@ -1,4 +1,4 @@
-package com.twopiradrian.notesapp.data.room.entity
+package com.twopiradrian.notesapp.data.datasource.room.note.config
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

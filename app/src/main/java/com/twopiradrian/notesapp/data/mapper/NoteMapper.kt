@@ -1,6 +1,6 @@
 package com.twopiradrian.notesapp.data.mapper
 
-import com.twopiradrian.notesapp.data.room.entity.NoteRoomEntity
+import com.twopiradrian.notesapp.data.datasource.room.note.config.NoteRoomEntity
 import com.twopiradrian.notesapp.domain.entity.NoteEntity
 
 object NoteMapper {

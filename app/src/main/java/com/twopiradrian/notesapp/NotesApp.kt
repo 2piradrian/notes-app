@@ -1,7 +1,7 @@
 package com.twopiradrian.notesapp
 
 import android.app.Application
-import com.twopiradrian.notesapp.data.room.database.NoteDatabase
+import com.twopiradrian.notesapp.data.datasource.room.note.config.NoteDatabase
 
 class NotesApp : Application() {
 

@@ -1,33 +1,33 @@
-package com.twopiradrian.notesapp.infrastructure.repository
+package com.twopiradrian.notesapp.data.repository
 
+import com.twopiradrian.notesapp.data.datasource.room.note.NoteRoomService
 import com.twopiradrian.notesapp.domain.datasource.NoteDatasource
 import com.twopiradrian.notesapp.domain.entity.NoteEntity
 import com.twopiradrian.notesapp.domain.repository.NoteRepository
-import com.twopiradrian.notesapp.infrastructure.datasource.RoomNoteDatasourceI
 import kotlinx.coroutines.flow.Flow
 
-class NoteRepositoryI : NoteRepository {
+class NoteRepository : NoteRepository {
 
-    private val noteDatasource: NoteDatasource = RoomNoteDatasourceI()
+    private val roomService: NoteDatasource = NoteRoomService()
 
     override fun getAll(): Flow<List<NoteEntity>> {
-        return noteDatasource.getAll()
+        return roomService.getAll()
     }
 
     override fun getById(id: String): Flow<NoteEntity> {
-        return noteDatasource.getById(id)
+        return roomService.getById(id)
     }
 
     override fun create(note: NoteEntity) {
-        return noteDatasource.create(note)
+        return roomService.create(note)
     }
 
     override fun update(note: NoteEntity) {
-        return noteDatasource.update(note)
+        return roomService.update(note)
     }
 
     override fun deleteNote(id: String) {
-        return noteDatasource.deleteNote(id)
+        return roomService.deleteNote(id)
     }
 
 }

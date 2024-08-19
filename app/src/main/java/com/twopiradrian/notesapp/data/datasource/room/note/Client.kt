@@ -1,16 +1,15 @@
-package com.twopiradrian.notesapp.data.room.dao
+package com.twopiradrian.notesapp.data.datasource.room.note
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.twopiradrian.notesapp.data.room.entity.NoteRoomEntity
+import com.twopiradrian.notesapp.data.datasource.room.note.config.NoteRoomEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface NoteDao {
+interface Client {
 
     @Query("SELECT * FROM notes ORDER BY date DESC")
     fun getAll(): Flow<List<NoteRoomEntity>>

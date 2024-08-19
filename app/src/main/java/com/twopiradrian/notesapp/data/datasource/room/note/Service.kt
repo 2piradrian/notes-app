@@ -1,4 +1,4 @@
-package com.twopiradrian.notesapp.infrastructure.datasource
+package com.twopiradrian.notesapp.data.datasource.room.note
 
 import com.twopiradrian.notesapp.NotesApp
 import com.twopiradrian.notesapp.data.mapper.NoteMapper
@@ -7,32 +7,32 @@ import com.twopiradrian.notesapp.domain.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class RoomNoteDatasourceI : NoteDatasource {
+class NoteRoomService : NoteDatasource {
 
-    private val noteDao = NotesApp().noteDatabase.noteDao()
+    private val client = NotesApp().noteDatabase.client()
 
     override fun getAll(): Flow<List<NoteEntity>> {
-        return noteDao.getAll().map { notes ->
+        return client.getAll().map { notes ->
             notes.map { NoteMapper.toEntity(it) }
         }
     }
 
     override fun getById(id: String): Flow<NoteEntity> {
-        return noteDao.getNoteById(id).map { note ->
+        return client.getNoteById(id).map { note ->
             NoteMapper.toEntity(note)
         }
     }
 
     override fun create(note: NoteEntity) {
-        noteDao.insert(NoteMapper.toRoomEntity(note))
+        client.insert(NoteMapper.toRoomEntity(note))
     }
 
     override fun update(note: NoteEntity) {
-        noteDao.update(NoteMapper.toRoomEntity(note))
+        client.update(NoteMapper.toRoomEntity(note))
     }
 
     override fun deleteNote(id: String) {
-        noteDao.delete(id)
+        client.delete(id)
     }
 
 }
