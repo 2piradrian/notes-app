@@ -1,8 +1,10 @@
 package com.twopiradrian.notesapp.domain.entity
 
-data class NoteEntity(
+import java.util.Date
+
+data class NotesEntity(
     val id: String,
     val title: String,
     val content: String,
-    val date: Long
+    val date: Date
 )
