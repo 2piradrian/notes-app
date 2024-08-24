@@ -3,12 +3,13 @@ package com.twopiradrian.notesapp.data.repository
 import com.twopiradrian.notesapp.domain.datasource.NotesDatasourceI
 import com.twopiradrian.notesapp.domain.entity.Note
 import com.twopiradrian.notesapp.domain.repository.NotesRepositoryI
+import com.twopiradrian.notesapp.domain.usecases.notes.definition.GetAllNotes
 
 class NotesRepository(
     private val roomDatasource: NotesDatasourceI
 ) : NotesRepositoryI {
 
-    override suspend fun getAll(): List<Note> {
+    override suspend fun getAll(): GetAllNotes.Response {
         return roomDatasource.getAll()
     }
 

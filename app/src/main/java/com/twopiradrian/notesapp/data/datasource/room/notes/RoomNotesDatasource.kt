@@ -3,6 +3,7 @@ package com.twopiradrian.notesapp.data.datasource.room.notes
 import com.twopiradrian.notesapp.data.datasource.mappers.NotesMapper
 import com.twopiradrian.notesapp.domain.datasource.NotesDatasourceI
 import com.twopiradrian.notesapp.domain.entity.Note
+import com.twopiradrian.notesapp.domain.usecases.notes.definition.GetAllNotes
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -10,9 +11,12 @@ class RoomNotesDatasource(
     private val client: RoomNotesClient
 ) : NotesDatasourceI {
 
-    override suspend fun getAll(): List<Note> {
+    override suspend fun getAll(): GetAllNotes.Response {
         return withContext(Dispatchers.IO) {
-            client.getAll().map { NotesMapper.toEntity(it) }
+            if (client.getAll().isEmpty()) {
+                GetAllNotes.Response(notes = emptyList())
+            }
+            GetAllNotes.Response(notes = client.getAll().map { NotesMapper.toEntity(it) })
         }
     }
 

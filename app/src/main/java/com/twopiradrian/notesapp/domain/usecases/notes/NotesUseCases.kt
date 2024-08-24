@@ -4,7 +4,7 @@ import android.content.Context
 import com.twopiradrian.notesapp.data.datasource.room.notes.RoomNotesDatasource
 import com.twopiradrian.notesapp.data.datasource.room.notes.implementation.RoomNotesDatabase
 import com.twopiradrian.notesapp.data.repository.NotesRepository
-import com.twopiradrian.notesapp.domain.usecases.notes.implementation.GetAllNotes
+import com.twopiradrian.notesapp.domain.usecases.notes.definition.GetAllNotes
 
 class NotesUseCases(
     val getAllNotes: GetAllNotes
