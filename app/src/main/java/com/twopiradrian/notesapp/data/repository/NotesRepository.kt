@@ -1,32 +1,31 @@
 package com.twopiradrian.notesapp.data.repository
 
 import com.twopiradrian.notesapp.domain.datasource.NotesDatasourceI
-import com.twopiradrian.notesapp.domain.entity.NotesEntity
+import com.twopiradrian.notesapp.domain.entity.Note
 import com.twopiradrian.notesapp.domain.repository.NotesRepositoryI
-import kotlinx.coroutines.flow.Flow
 
-class NotesRepository (
-    private val notesDatasource: NotesDatasourceI
+class NotesRepository(
+    private val roomDatasource: NotesDatasourceI
 ) : NotesRepositoryI {
 
-    override fun getAll(): Flow<List<NotesEntity>> {
-        return notesDatasource.getAll()
+    override suspend fun getAll(): List<Note> {
+        return roomDatasource.getAll()
     }
 
-    override fun getById(id: String): Flow<NotesEntity> {
-        return notesDatasource.getById(id)
+    override suspend fun getById(id: String): Note {
+        return roomDatasource.getById(id)
     }
 
-    override fun create(note: NotesEntity) {
-        return notesDatasource.create(note)
+    override suspend fun create(note: Note) {
+        return roomDatasource.create(note)
     }
 
-    override fun update(note: NotesEntity) {
-        return notesDatasource.update(note)
+    override suspend fun update(note: Note) {
+        return roomDatasource.update(note)
     }
 
-    override fun delete(note: NotesEntity) {
-        return notesDatasource.delete(note)
+    override suspend fun delete(note: Note) {
+        return roomDatasource.delete(note)
     }
 
 }

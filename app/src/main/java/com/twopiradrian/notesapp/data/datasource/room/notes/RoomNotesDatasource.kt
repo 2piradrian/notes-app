@@ -2,31 +2,42 @@ package com.twopiradrian.notesapp.data.datasource.room.notes
 
 import com.twopiradrian.notesapp.data.datasource.mappers.NotesMapper
 import com.twopiradrian.notesapp.domain.datasource.NotesDatasourceI
-import com.twopiradrian.notesapp.domain.entity.NotesEntity
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import com.twopiradrian.notesapp.domain.entity.Note
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
-class RoomNotesDatasource (
-    private val datasource: RoomNotesClient
+class RoomNotesDatasource(
+    private val client: RoomNotesClient
 ) : NotesDatasourceI {
 
-    override fun getAll(): Flow<List<NotesEntity>> {
-        return datasource.getAll().map { note -> note.map { NotesMapper.toEntity(it) } }
+    override suspend fun getAll(): List<Note> {
+        return withContext(Dispatchers.IO) {
+            client.getAll().map { NotesMapper.toEntity(it) }
+        }
     }
 
-    override fun getById(id: String): Flow<NotesEntity> {
-        return datasource.getById(id).map { NotesMapper.toEntity(it) }
+    override suspend fun getById(id: String): Note {
+        return withContext(Dispatchers.IO) {
+            NotesMapper.toEntity(client.getById(id))
+        }
     }
 
-    override fun create(note: NotesEntity) {
-        return datasource.create(NotesMapper.toRoomEntity(note))
+    override suspend fun create(note: Note) {
+        return withContext(Dispatchers.IO) {
+            client.create(NotesMapper.toRoomEntity(note))
+        }
     }
 
-    override fun update(note: NotesEntity) {
-        return datasource.update(NotesMapper.toRoomEntity(note))
+    override suspend fun update(note: Note) {
+        return withContext(Dispatchers.IO) {
+            client.update(NotesMapper.toRoomEntity(note))
+        }
     }
 
-    override fun delete(note: NotesEntity) {
-        return datasource.delete(NotesMapper.toRoomEntity(note))
+    override suspend fun delete(note: Note) {
+        return withContext(Dispatchers.IO) {
+            client.delete(NotesMapper.toRoomEntity(note))
+        }
     }
+
 }

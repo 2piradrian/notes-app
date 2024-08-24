@@ -1,12 +1,11 @@
 package com.twopiradrian.notesapp.domain.datasource
 
-import com.twopiradrian.notesapp.domain.entity.NotesEntity
-import kotlinx.coroutines.flow.Flow
+import com.twopiradrian.notesapp.domain.entity.Note
 
 interface NotesDatasourceI {
-    fun getAll() : Flow<List<NotesEntity>>
-    fun getById(id: String) : Flow<NotesEntity>
-    fun create(note: NotesEntity)
-    fun update(note: NotesEntity)
-    fun delete(note: NotesEntity)
+    suspend fun getAll(): List<Note>
+    suspend fun getById(id: String): Note
+    suspend fun create(note: Note)
+    suspend fun update(note: Note)
+    suspend fun delete(note: Note)
 }

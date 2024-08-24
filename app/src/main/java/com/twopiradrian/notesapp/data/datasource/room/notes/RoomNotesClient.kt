@@ -5,25 +5,24 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.twopiradrian.notesapp.data.datasource.room.notes.implementation.RoomNotesEntity
-import kotlinx.coroutines.flow.Flow
+import com.twopiradrian.notesapp.data.datasource.room.notes.implementation.RoomNoteEntity
 
 @Dao
 interface RoomNotesClient {
 
-    @Query("SELECT * FROM RoomNotesEntity")
-    fun getAll(): Flow<List<RoomNotesEntity>>
+    @Query("SELECT * FROM RoomNoteEntity")
+    suspend fun getAll(): List<RoomNoteEntity>
 
-    @Query("SELECT * FROM RoomNotesEntity WHERE id = :id")
-    fun getById(id: String): Flow<RoomNotesEntity>
+    @Query("SELECT * FROM RoomNoteEntity WHERE id = :id")
+    suspend fun getById(id: String): RoomNoteEntity
 
     @Insert
-    fun create(note: RoomNotesEntity)
+    suspend fun create(note: RoomNoteEntity)
 
     @Update
-    fun update(note: RoomNotesEntity)
+    suspend fun update(note: RoomNoteEntity)
 
     @Delete
-    fun delete(note: RoomNotesEntity)
+    suspend fun delete(note: RoomNoteEntity)
 
 }

@@ -10,6 +10,7 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import com.twopiradrian.notesapp.core.navigation.AppNavigation
+import com.twopiradrian.notesapp.domain.usecases.UseCases
 import com.twopiradrian.notesapp.ui.app.ContentType
 import com.twopiradrian.notesapp.ui.app.NavigationType
 import com.twopiradrian.notesapp.ui.theme.NotesAppTheme
@@ -18,6 +19,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val useCases = UseCases.create(this)
+
         setContent {
             NotesAppTheme {
                 val windowSize = calculateWindowSizeClass(this)
@@ -44,7 +48,11 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-                AppNavigation(navigationType = navigationType, contentType = contentType)
+                AppNavigation(
+                    navigationType = navigationType,
+                    contentType = contentType,
+                    useCases = useCases
+                )
             }
         }
     }
