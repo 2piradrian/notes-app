@@ -1,4 +1,4 @@
-package com.twopiradrian.notesapp.ui.screen.home
+package com.twopiradrian.notesapp.ui.screen.home.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

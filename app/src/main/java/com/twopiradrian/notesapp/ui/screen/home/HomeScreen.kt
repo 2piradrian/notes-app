@@ -1,11 +1,11 @@
 package com.twopiradrian.notesapp.ui.screen.home
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavController
 import com.twopiradrian.notesapp.ui.app.ContentType
 import com.twopiradrian.notesapp.ui.app.NavigationType
+import com.twopiradrian.notesapp.ui.layout.AppLayout
+import com.twopiradrian.notesapp.ui.screen.home.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreen(
@@ -14,8 +14,15 @@ fun HomeScreen(
     contentType: ContentType,
     viewModel: HomeViewModel
 ) {
-    LaunchedEffect(true) {
-        viewModel.getAllNotes()
-    }
-    Text(text = "Home Screen")
+    AppLayout(
+        navController = navController,
+        content = {
+            HomeBody()
+        }
+    )
+}
+
+@Composable
+fun HomeBody(){
+
 }

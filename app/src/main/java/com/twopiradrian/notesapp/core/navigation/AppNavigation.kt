@@ -9,7 +9,7 @@ import com.twopiradrian.notesapp.domain.usecases.UseCases
 import com.twopiradrian.notesapp.ui.app.ContentType
 import com.twopiradrian.notesapp.ui.app.NavigationType
 import com.twopiradrian.notesapp.ui.screen.home.HomeScreen
-import com.twopiradrian.notesapp.ui.screen.home.HomeViewModelFactory
+import com.twopiradrian.notesapp.ui.screen.home.viewmodel.HomeViewModelFactory
 
 @Composable
 fun AppNavigation (
