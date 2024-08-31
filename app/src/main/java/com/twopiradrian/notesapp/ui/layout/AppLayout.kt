@@ -41,7 +41,12 @@ fun AppLayout(
                 modifier = Modifier
                     .fillMaxSize()
                     .widthIn(500.dp)
-                    .padding(innerPadding)
+                    .padding(
+                        top = innerPadding.calculateTopPadding(),
+                        bottom = innerPadding.calculateBottomPadding(),
+                        start = 16.dp,
+                        end = 16.dp,
+                    )
             ) {
                 content()
             }
